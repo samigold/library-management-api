@@ -7,6 +7,7 @@ export interface LibraryEntity {
     author: string;
     isbn: string;
     status: BookStatus;
+    quantity: number;
     createdAt?: Date;
     updatedAt?: Date;
 }
@@ -19,6 +20,8 @@ export const LibraryEntity = {
             author: record.author,
             isbn: record.isbn,
             status: record.status,
+            quantity: record.quantity,
+            
             createdAt: record.createdAt,
             updatedAt: record.updatedAt,
         };

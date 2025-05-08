@@ -8,6 +8,7 @@ export interface BookRecord {
   author: string;
   isbn: string;
   status: BookStatus;
+  quantity: number;
   createdAt?: Date;
     updatedAt?: Date;  
 }

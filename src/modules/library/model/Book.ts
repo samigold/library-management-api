@@ -20,7 +20,10 @@ const BookSchema = new mongoose.Schema<BookRecord>({
         type: String,
         enum: BookStatus,
         default: BookStatus.AVAILABLE,
-        required: true
+    },
+    quantity: {
+       type: Number,
+       default: 1, 
     }
 }, {
     timestamps: {
@@ -29,5 +32,5 @@ const BookSchema = new mongoose.Schema<BookRecord>({
     }
 });
 
-const Book = mongoose.model("Book", BookSchema);
-export default Book;
+const BookModel = mongoose.model("Book", BookSchema);
+export default BookModel;
