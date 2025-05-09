@@ -17,7 +17,7 @@ app.use('/library', LibraryRoutes); // Mount the library routes to the /library 
 app.use(errorHandlerMiddleware); // Middleware to handle errors
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send("<h1>Welcome to the Library API</h1>");
 });
 
 app.listen(Number(process.env.PORT) || 3000, () => {
