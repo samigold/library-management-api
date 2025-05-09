@@ -21,10 +21,14 @@ const BookSchema = new mongoose.Schema<BookRecord>({
         enum: BookStatus,
         default: BookStatus.AVAILABLE,
     },
-    quantity: {
+    totalQuantity: {
        type: Number,
        default: 1, 
-    }
+    },
+    availableQuantity: {
+        type: Number,
+        default: 1,
+    },
 }, {
     timestamps: {
         createdAt: "created_at",

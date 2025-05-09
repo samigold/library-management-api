@@ -5,5 +5,6 @@ export interface ICreateBook {
     author: string;
     status: BookStatus;
     isbn: string;
-    quantity: number;
+    totalQuantity: number;
+    availableQuantity: number;
 }
