@@ -2,7 +2,7 @@
   "name": "library-management-api",
   "version": "1.0.0",
   "main": "index.js",
-  _moduleAliases": {
+  "_moduleAliases": {
     "src": "dist/src"
   },
   "scripts": {
