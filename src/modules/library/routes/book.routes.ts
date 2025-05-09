@@ -90,7 +90,7 @@ router.get('/', LibraryController.getAllBooks);
 
 /**
  * @swagger
- * /library/:
+ * /library/{isbn}:
  *   get:
  *     summary: Get a book by ISBN
  *     tags: [Books]
@@ -119,7 +119,7 @@ router.get('/', LibraryController.getAllBooks);
  *       500:
  *         $ref: '#/components/responses/InternalError'
  */
-//router.get('/:isbn', LibraryController.getBook);
+router.get('/:isbn', LibraryController.getBook);
 
 /**
  * @swagger

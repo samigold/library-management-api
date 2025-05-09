@@ -4,6 +4,28 @@ import { BookStatus as BOOK_STATUS } from '../../shared/constants/book-status.en
 import { BadRequestError, NotFoundError } from '../../shared/errors';
 
 export const LibraryController = {
+    getBook: async (req: Request, res: Response): Promise<void> => {
+        const { isbn } = req.params;
+            
+            if (!isbn) {
+                res.status(400).json({ message: 'Missing required fields' });
+                return;
+            }
+    
+            const book = await LibraryService.fetchById(isbn)
+    
+            if (!book) {
+                res.status(404).json({ message: 'Book not found' });
+                return;
+            }
+    
+            res.status(200).json({
+                success: true,
+                message: 'Book fetched successfully',
+                data: book
+            })
+
+    },
     getAllBooks: async (req: Request, res: Response): Promise<void> => {
         const books = await LibraryService.fetchAll()
 
