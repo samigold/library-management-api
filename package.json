@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon",
-    "start": "node dist/app.js",
+    "start": "node -r module-alias/register dist/src/index.js",
     "build": "tsc"
   },
   "author": "",

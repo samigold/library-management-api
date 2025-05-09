@@ -22,5 +22,6 @@
       { "transform": "typescript-transform-paths", "afterDeclarations": true },
     ]
   },
-  "include": ["src/**/*.ts", "src/config/database/autoIncrementInit.ts", "src/shared/decorators/*.ts", "src/index.ts"]
+  "include": ["src/**/*.ts", "src/config/database/autoIncrementInit.ts", "src/shared/decorators/*.ts", "src/types/env.d.ts", "src/index.ts"],
+  "files": ["src/types/request.d.ts", "src/types/environment.d.ts"]
 }
