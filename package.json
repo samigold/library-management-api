@@ -2,9 +2,6 @@
   "name": "library-management-api",
   "version": "1.0.0",
   "main": "index.js",
-  "_moduleAliases": {
-    "src": "dist/src"
-  },
   "scripts": {
     "dev": "nodemon",
     "start": "node -r module-alias/register dist/src/index.js",
