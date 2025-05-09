@@ -123,7 +123,7 @@ router.get('/:isbn', LibraryController.getBook);
 
 /**
  * @swagger
- * /library/update:
+ * /library/{isbn}:
  *   put:
  *     summary: Update a book
  *     tags: [Books]
@@ -167,7 +167,7 @@ router.get('/:isbn', LibraryController.getBook);
  *       500:
  *         $ref: '#/components/responses/InternalError'
  */
-router.put('/update', LibraryController.updateBook);
+router.put('/:isbn', LibraryController.updateBook);
 
 /**
  * @swagger

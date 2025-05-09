@@ -95,23 +95,35 @@ export const LibraryController = {
     }
     },
     updateBook: async (req: Request, res: Response): Promise<void> => {
-        try{
-        const { isbn, title, author, status, quantity } = req.body;
-        const existingBook = await LibraryService.fetchByIsbn(isbn)
-        if (!existingBook) {
-            res.status(404).json({ message: 'Book not found' });
-            return;
-        }
-        const updatedBookEntity = await LibraryService.update(isbn, {
-            title,
-            author,
-            status,
-            totalQuantity: quantity
-        })
-        } catch (error) {
-            console.error("There was an error updating book", error);
-            throw error;
-        }
+            const { isbn } = req.params;
+            
+            if (!isbn) {
+                throw new BadRequestError('ISBN is required');
+            }
+            
+            // Don't destructure with required fields - allow partial updates
+            const updateData = req.body;
+            
+            // Check if any update data was provided
+            if (!updateData || Object.keys(updateData).length === 0) {
+                throw new BadRequestError('No update data provided');
+            }
+            
+            const existingBook = await LibraryService.fetchByIsbn(isbn);
+            
+            if (!existingBook) {
+                throw new NotFoundError('Book not found');
+            }
+            
+            const updatedBookEntity = await LibraryService.update(isbn, updateData);
+            
+            // Send the response (this was missing in the original code)
+            res.status(200).json({
+                success: true,
+                message: 'Book updated successfully',
+                data: updatedBookEntity
+            });
+            
     },
     borrowBook: async (req: Request, res: Response) : Promise<void> => {
         const { isbn } = req.body;
