@@ -115,6 +115,26 @@ export const LibraryService = {
         if (!updatedBookRecord) throw new NotFoundError("Book not found");
 
         return LibraryEntity.fromRecordToEntity(updatedBookRecord);
+    },
+    update: async (isbn: string, book: Partial<ICreateBook>) => {
+        const bookRecord = await BookModel.findOne({isbn})
+
+        if (!bookRecord) throw new NotFoundError("Book not found");
+
+        if(book.totalQuantity !== undefined) {
+            bookRecord.totalQuantity = book.totalQuantity || bookRecord.totalQuantity;
+
+            if(bookRecord.totalQuantity < bookRecord.availableQuantity){
+                throw new BadRequestError("Total quantity cannot be less than available quantity");
+            }
+        }
+
+        const updatedBookRecord = await BookModel.findOneAndUpdate({isbn}, {$set: bookRecord}, {new: true})
+
+        if (!updatedBookRecord) throw new NotFoundError("Book not found");
+
+        return LibraryEntity.fromRecordToEntity(updatedBookRecord);
+
     }
 
 }

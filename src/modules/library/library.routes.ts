@@ -1,15 +1,9 @@
 import express from 'express';
-import { LibraryController } from './library.controller';
+import bookRoutes from './routes/book.routes';
 
-const LibraryRoutes = express.Router();
+const router = express.Router();
 
+// Use the book routes
+router.use('/', bookRoutes);
 
-LibraryRoutes.get('/', LibraryController.getAllBooks);
-LibraryRoutes.post('/add', LibraryController.addBook);
-LibraryRoutes.post('/borrow', LibraryController.borrowBook);
-LibraryRoutes.put('/return', LibraryController.returnBook);
-
-LibraryRoutes.delete('/delete', LibraryController.deleteBook);
-//LibraryRoutes.get('/fetch/:id', LibraryController.fetchById);
-
-export default LibraryRoutes;
+export default router;

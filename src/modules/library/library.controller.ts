@@ -72,6 +72,25 @@ export const LibraryController = {
         throw error;
     }
     },
+    updateBook: async (req: Request, res: Response): Promise<void> => {
+        try{
+        const { isbn, title, author, status, quantity } = req.body;
+        const existingBook = await LibraryService.fetchByIsbn(isbn)
+        if (!existingBook) {
+            res.status(404).json({ message: 'Book not found' });
+            return;
+        }
+        const updatedBookEntity = await LibraryService.update(isbn, {
+            title,
+            author,
+            status,
+            totalQuantity: quantity
+        })
+        } catch (error) {
+            console.error("There was an error updating book", error);
+            throw error;
+        }
+    },
     borrowBook: async (req: Request, res: Response) : Promise<void> => {
         const { isbn } = req.body;
 
