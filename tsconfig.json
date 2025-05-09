@@ -8,7 +8,7 @@
     "paths": {
       "src/*": ["src/*"]
     },
-    "outDir": "./dist",                                      /* Specify an output folder for all emitted files. */
+    "outDir": "dist/src/index.js",                                      /* Specify an output folder for all emitted files. */
     "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
     "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
     "moduleResolution": "node",
@@ -22,6 +22,5 @@
       { "transform": "typescript-transform-paths", "afterDeclarations": true },
     ]
   },
-  "include": ["src/**/*.ts", "src/config/database/autoIncrementInit.ts", "src/shared/decorators/*.ts", "src/types/env.d.ts", "src/index.ts"],
-  "files": ["src/types/request.d.ts", "src/types/environment.d.ts"]
+  "include": ["src/**/*.ts", "src/config/database/autoIncrementInit.ts", "src/shared/decorators/*.ts", "src/index.ts"]
 }
