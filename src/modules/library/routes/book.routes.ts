@@ -90,7 +90,7 @@ router.get('/', LibraryController.getAllBooks);
 
 /**
  * @swagger
- * /library/{isbn}:
+ * /library/:
  *   get:
  *     summary: Get a book by ISBN
  *     tags: [Books]
@@ -123,17 +123,10 @@ router.get('/', LibraryController.getAllBooks);
 
 /**
  * @swagger
- * /library/{isbn}:
+ * /library/update:
  *   put:
  *     summary: Update a book
  *     tags: [Books]
- *     parameters:
- *       - in: path
- *         name: isbn
- *         schema:
- *           type: string
- *         required: true
- *         description: ISBN of the book
  *     requestBody:
  *       required: true
  *       content:
@@ -178,17 +171,22 @@ router.put('/update', LibraryController.updateBook);
 
 /**
  * @swagger
- * /library/{isbn}:
+ * /library:
  *   delete:
  *     summary: Delete a book
  *     tags: [Books]
- *     parameters:
- *       - in: path
- *         name: isbn
- *         schema:
- *           type: string
- *         required: true
- *         description: ISBN of the book to delete
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - isbn
+ *             properties:
+ *               isbn:
+ *                 type: string
+ *                 description: ISBN of the book to delete
  *     responses:
  *       200:
  *         description: Book deleted successfully
@@ -210,7 +208,7 @@ router.put('/update', LibraryController.updateBook);
  *       500:
  *         $ref: '#/components/responses/InternalError'
  */
-router.delete('/:isbn', LibraryController.deleteBook);
+router.delete('/', LibraryController.deleteBook);
 
 /**
  * @swagger

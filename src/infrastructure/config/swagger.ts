@@ -20,7 +20,7 @@ const options: swaggerJsdoc.Options = {
         description: 'Development server',
       },
       {
-        url: 'https://your-production-url.com',
+        url: 'https://library-management-api-irtc.onrender.com',
         description: 'Production server',
       },
     ],

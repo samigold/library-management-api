@@ -28,10 +28,9 @@ A RESTful API for a library management system built with Node.js, Express.js, Ty
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET    | /library | Get all books |
-| GET    | /library/:isbn | Get book by ISBN |
 | POST   | /library | Add a new book |
-| PUT    | /library/:isbn | Update a book |
-| DELETE | /library/:isbn | Delete a book |
+| PUT    | /library | Update a book |
+| DELETE | /library | Delete a book |
 | POST   | /library/borrow | Borrow a book |
 | POST   | /library/return | Return a book |
 
